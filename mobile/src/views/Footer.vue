@@ -45,6 +45,8 @@ export default class Footer extends Vue {}
   .footer {
     height: 100%;
     width: 100%;
+    padding: .133333rem 0;
+    border-top: 1px solid #c6c0b3;
   }
   ul {
     display: flex;
@@ -61,8 +63,9 @@ export default class Footer extends Vue {}
     font-size: 1rem;
   }
   .iconTitle {
-    font-size: .5866666rem;
+    font-size: .42666666rem;
     text-align: center;
+    margin-top: .1066666rem;
   }
   a {
     color: #37A2D8;

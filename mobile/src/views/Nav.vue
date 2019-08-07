@@ -5,7 +5,7 @@
     </div>
     <ul>
       <li>
-        <a href="">
+        <a href="#">
           <span class="iconfont">&#xe6f1;</span>
           <p>资讯</p>
         </a>
@@ -41,41 +41,52 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="" @click.prevent="noContent">
           <span class="iconfont">&#xe61a;</span>
           <p>西甲</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="" @click.prevent="noContent">
           <span class="iconfont">&#xe8fb;</span>
           <p>中超</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="" @click.prevent="noContent">
         <span class="iconfont">&#xe638;</span>
         <p>德甲</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="" @click.prevent="noContent">
           <span class="iconfont">&#xe53f;</span>
           <p>意甲</p>
         </a>
       </li>
     </ul>
+    <Layout :display="display" text="暂无开放，敬请期待~"></Layout>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
+import Layout from '../components/Layout.vue'
 @Component({
   components: {
-
+    Layout
   }
 })
-export default class Nav extends Vue {}
+export default class Nav extends Vue {
+  @Provide() display: string = 'none'
+  noContent () {
+    var that = this
+    that.display = 'flex'
+    setTimeout(function () {
+      that.display = 'none'
+    }, 2000)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -90,24 +101,26 @@ export default class Nav extends Vue {}
   ul {
     display: flex;
     flex-wrap: wrap;
-    margin: .7rem .1066666rem 0 .1066666rem;
+    margin: .35rem .1066666rem;
   }
   ul>li {
     display: flex;
     flex-basis: 25%;
     justify-content: center;
     align-items: center;
-    margin: .5rem 0;
+    margin: .33333rem 0;
   }
   ul>li>a {
     color: #37A2D8;
   }
   ul>li>a>span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    padding: .1rem;
+    text-align: center;
   }
   ul>li>a>p {
-    font-size: .5866666rem;
+    font-size: .4266666rem;
     text-align: center;
-    margin-top: .1333333rem;
+    margin-top: .3333333rem;
   }
 </style>
