@@ -40,7 +40,7 @@ import { State, Getter, Mutation, Action } from 'vuex-class'
 export default class Footer extends Vue {}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import url(../../public/css/font.css);
   .footer {
     height: 100%;
