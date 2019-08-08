@@ -2,25 +2,25 @@
   <div class="footer">
     <ul>
       <li>
-        <a href="">
+        <a href="/">
           <span class="iconfont">&#xe608;</span>
           <p class="iconTitle">首页</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="/team">
           <span class="iconfont">&#xe69a;</span>
           <p class="iconTitle">球队</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="/match">
           <span class="iconfont">&#xe63f;</span>
           <p class="iconTitle">比赛</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="/login">
           <span class="iconfont">&#xe62a;</span>
           <p class="iconTitle">我</p>
         </a>

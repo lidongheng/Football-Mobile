@@ -1,24 +1,38 @@
 <template>
   <div class="header">
-    <div class="back-wrapper">
+    <div class="back-wrapper" @click="back">
       <span class="iconfont">&#xe66a;</span>
     </div>
     <div class="title-wrapper">标题栏</div>
-    <div class="share-wrapper">
+    <div class="share-wrapper" @click="noContent">
       <span class="iconfont">&#xe64e;</span>
     </div>
+    <Layout :display="display" text="暂未开放，敬请期待~"></Layout>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import { State, Getter, Mutation, Action } from 'vuex-class'
+import Layout from '../components/Layout.vue'
 @Component({
   components: {
-
+    Layout
   }
 })
-export default class Header extends Vue {}
+export default class Header extends Vue {
+  back () {
+    this.$router.go(-1)
+  }
+  @Provide() display: string = 'none'
+  noContent () {
+    let that = this
+    that.display = 'flex'
+    setTimeout(function () {
+      that.display = 'none'
+    }, 2000)
+  }
+}
 </script>
 
 <style lang="scss" scoped>

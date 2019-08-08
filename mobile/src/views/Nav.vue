@@ -17,10 +17,10 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <router-link to="/article" name="article">
           <span class="iconfont">&#x3500;</span>
           <p>文章</p>
-        </a>
+        </router-link>
       </li>
       <li>
         <a href="">
@@ -65,7 +65,7 @@
         </a>
       </li>
     </ul>
-    <Layout :display="display" text="暂无开放，敬请期待~"></Layout>
+    <Layout :display="display" text="暂未开放，敬请期待~"></Layout>
   </div>
 </template>
 

@@ -1,0 +1,67 @@
+/* 按钮样式 */
+
+.btn {
+    display: block;
+    border: 0;
+    width: 80%;
+    height: 1.28rem;
+    line-height: 1.28rem;
+    margin: 1rem auto;
+    border-radius: .66666rem;
+    padding: 0 .8533333rem;
+    letter-spacing: .16rem;
+    outline: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #89c7ff;
+    font-size: 0.48rem;
+    box-shadow: rgba(137, 199, 255, 0.57) 0 12px 24px;
+}
+
+.btn-light {
+    background-color: #f2f2f2;
+    font-size: 0.48rem;
+    color: #333333;
+}
+
+.btn-primary:hover {
+    background: #B9DCFF;
+}
+
+/* 表单项 */
+
+input textarea {
+    background: none;
+    border: none;
+    outline: none;
+    font-variant: normal;
+}
+
+
+input:focus {
+    outline: rgb(0,0,0) none 0;
+    outline-offset: 0px;
+    box-shadow: #badef2 0 0 5px;
+    overflow: visible;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #999;
+    font-size: .426666rem;
+    letter-spacing: .026666rem;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #999;
+    font-size: .426666rem;
+    letter-spacing: .026666rem;
+
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #999;
+    font-size: .426666rem;
+    letter-spacing: .026666rem;
+}
