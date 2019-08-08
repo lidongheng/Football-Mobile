@@ -4,7 +4,7 @@
       <h1>欢迎登录</h1>
       <form>
         <div class="form-control">
-          <input type="text" name="username" placeholder="邮箱地址">
+          <input type="text" name="email" placeholder="邮箱地址">
         </div>
         <div class="form-control">
           <input type="password" name="password" placeholder="密码">

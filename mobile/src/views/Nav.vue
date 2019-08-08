@@ -17,16 +17,16 @@
         </a>
       </li>
       <li>
-        <router-link to="/article" name="article">
+        <router-link to="/article" name="article" tag="a">
           <span class="iconfont">&#x3500;</span>
           <p>文章</p>
         </router-link>
       </li>
       <li>
-        <a href="">
+        <router-link to="/comment" name="comment" tag="a">
           <span class="iconfont">&#xe63e;</span>
           <p>热评</p>
-        </a>
+        </router-link>
       </li>
       <li>
         <a href="">

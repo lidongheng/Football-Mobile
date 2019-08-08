@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 }
 html {
     font-size: 37.5px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB",Arial,sans-serif,Open Sans, sans-serif;
 }
 body {
     line-height: 1;
