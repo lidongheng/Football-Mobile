@@ -1,6 +1,6 @@
 <template>
   <div class="match">
-    123
+    比赛页面
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="addArticle">
-    123
+  <div class="timeLine">
+    时间线页面
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
   }
 })
-export default class AddArticle extends Vue {}
+export default class TimeLine extends Vue {}
 </script>
 
 <style lang="scss" scoped>

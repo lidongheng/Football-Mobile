@@ -49,6 +49,20 @@
     <div class="add-comment">
       <a href="">+</a>
     </div>
+    <div class="input-comment">
+      <div class="input-comment-header">
+        <div class="left-button">
+          <button type="button" class="btn">取消</button>
+        </div>
+        <div class="center-title">
+          <span class="title">发热评</span>
+        </div>
+        <div class="right-button">
+          <button type="button">发送</button>
+        </div>
+      </div>
+      <textarea name="" id="" cols="30" rows="10" placeholder="分享新鲜事..."></textarea>
+    </div>
   </div>
 </template>
 
@@ -131,5 +145,60 @@ export default class Comment extends Vue {}
   }
   .add-comment>a{
     color: #fff;
+  }
+  .input-comment {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: red;
+  }
+  .input-comment .input-comment-header {
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #FdFdFd;
+  }
+  .input-comment .input-comment-header .left-button button {
+    outline: none;
+    background-color: #FdFdFd;
+    letter-spacing: 1px;
+    font-size: .426666rem;
+  }
+  .input-comment>textarea{
+    width: 100%;
+    outline: none;
+  }
+  .input-comment .input-comment-header .left-button,.input-comment .input-comment-header .right-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-comment>.input-comment-header>.right-button>button {
+    background-color: orange;
+    color: #fff;
+    border-radius: .1066666rem;
+    letter-spacing: 1px;
+    font-size: .373333rem;
+    padding: .1866666rem;
+    margin-right: .186666rem;
+    border: 1px solid #eee;
+  }
+  .input-comment>.input-comment-header>.right-button>button:disabled {
+    background-color: #f8f8f8;
+    border-radius: .1066666rem;
+    letter-spacing: 1px;
+    font-size: .426666rem;
+    padding: .1866666rem;
+    margin-right: .186666rem;
+    border: 1px solid #eee;
+  }
+  .input-comment .input-comment-header .center-title .title {
+    font-size: .48rem;
+    font-weight: 600;
+    font-family: '-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB",Arial,sans-serif,Open Sans';
   }
 </style>

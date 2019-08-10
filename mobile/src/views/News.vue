@@ -1,6 +1,6 @@
 <template>
-  <div class="team">
-    球队页面
+  <div class="news">
+    资讯页面
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
   }
 })
-export default class Team extends Vue {}
+export default class News extends Vue {}
 </script>
 
 <style lang="scss" scoped>

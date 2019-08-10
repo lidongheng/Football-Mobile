@@ -5,16 +5,16 @@
     </div>
     <ul>
       <li>
-        <a href="#">
+        <router-link to="/news" name="news" tag="a">
           <span class="iconfont">&#xe6f1;</span>
           <p>资讯</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="">
+        <router-link to="/report" name="report" tag="a">
           <span class="iconfont">&#xe65b;</span>
           <p>报告</p>
-        </a>
+        </router-link>
       </li>
       <li>
         <router-link to="/article" name="article" tag="a">
@@ -29,16 +29,16 @@
         </router-link>
       </li>
       <li>
-        <a href="">
+        <router-link to="/timeLine" name="timeLine" tag="a">
           <span class="iconfont">&#xe6e7;</span>
           <p>时间线</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="">
+        <router-link to="/premierLeague" name="premierLeague" tag="a">
           <span class="iconfont">&#xe61d;</span>
           <p>英超</p>
-        </a>
+        </router-link>
       </li>
       <li>
         <a href="" @click.prevent="noContent">

@@ -54,6 +54,9 @@ export default class Register extends Vue {}
   .form-control {
     width: 80%;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .register-title {
     width: 80%;

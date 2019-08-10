@@ -1,5 +1,5 @@
 <template>
-  <div class="article">
+  <div class="report">
     <div class="new_article">
       <button class="btn btn-primary">新增报告</button>
     </div>
@@ -8,13 +8,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-
 @Component({
   components: {
 
   }
 })
-export default class Article extends Vue {}
+export default class Report extends Vue {}
 </script>
 
 <style lang="scss" scoped>
