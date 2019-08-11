@@ -3,48 +3,18 @@
     <div class="theme">
       <h1>文章</h1>
     </div>
-    <div class="content">
-      <div class="info">
-        <span class="month">05.13</span>
-        <span class="year">2019</span>
-      </div>
-      <div class="title-wrapper">
-        <div class="title">
-          <a href="">新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联</a>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="info">
-        <span class="month">05.13</span>
-        <span class="year">2019</span>
-      </div>
-      <div class="title-wrapper">
-        <div class="title">
-          <a href="">新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联</a>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="info">
-        <span class="month">05.13</span>
-        <span class="year">2019</span>
-      </div>
-      <div class="title-wrapper">
-        <div class="title">
-          <a href="">新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联</a>
-        </div>
-      </div>
-    </div>
+    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
+    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
+    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-
+import NewsItem from '../components/NewsItem.vue'
 @Component({
   components: {
-
+    NewsItem
   }
 })
 export default class Article extends Vue {}
