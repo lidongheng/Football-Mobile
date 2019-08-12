@@ -47,12 +47,12 @@
       </div>
     </div>
     <div class="add-comment">
-      <a href="">+</a>
+      <a href="javascript:void(0);" @click="addInput">+</a>
     </div>
-    <div class="input-comment">
+    <div ref="inputComment" class="input-comment" style="display:none;">
       <div class="input-comment-header">
         <div class="left-button">
-          <button type="button" class="btn">取消</button>
+          <button type="button" class="btn" @click="cancelInput">取消</button>
         </div>
         <div class="center-title">
           <span class="title">发热评</span>
@@ -61,19 +61,27 @@
           <button type="button">发送</button>
         </div>
       </div>
-      <textarea name="" id="" cols="30" rows="10" placeholder="分享新鲜事..."></textarea>
+      <TextAreaItem width="98%" name="inputComment" cols="30" rows="20" placeholder="分享新鲜事..."></TextAreaItem>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import TextAreaItem from '../components/TextareaItem.vue'
 @Component({
   components: {
-
+    TextAreaItem
   }
 })
-export default class Comment extends Vue {}
+export default class Comment extends Vue {
+  addInput () {
+    this.$refs.inputComment.style.display = 'block'
+  }
+  cancelInput () {
+    this.$refs.inputComment.style.display = 'none'
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -147,13 +155,12 @@ export default class Comment extends Vue {}
     color: #fff;
   }
   .input-comment {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background: red;
+    background-color: #fff;
   }
   .input-comment .input-comment-header {
     height: 8vh;

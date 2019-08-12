@@ -1,7 +1,7 @@
 <template>
   <div class="report">
     <div class="new_article">
-      <button class="btn btn-primary">新增报告</button>
+      <button class="btn btn-primary" @click="add">新增报告</button>
     </div>
     <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
     <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
@@ -17,7 +17,11 @@ import NewsItem from '../../components/NewsItem.vue'
     NewsItem
   }
 })
-export default class Report extends Vue {}
+export default class Report extends Vue {
+  add () {
+    this.$router.push({ name: 'addReport' })
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -3,18 +3,10 @@
     <div class="title">
       <h1>欢迎注册</h1>
       <form>
-        <div class="form-control">
-          <input type="text" name="username" placeholder="请输入用户名">
-        </div>
-        <div class="form-control">
-          <input type="text" name="email" placeholder="请输入邮箱地址">
-        </div>
-        <div class="form-control">
-          <input type="password" name="password" placeholder="请输入密码">
-        </div>
-        <div class="form-control">
-          <input type="password" name="password2" placeholder="再次输入密码">
-        </div>
+        <InputItem type="text" name="username" placeholder="请输入用户名"></InputItem>
+        <InputItem type="email" name="email" placeholder="请输入邮箱地址"></InputItem>
+        <InputItem type="password" name="password" placeholder="请输入密码"></InputItem>
+        <InputItem type="password" name="password2" placeholder="请再次输入密码"></InputItem>
         <div class="form-control">
           <button type="button" class="btn btn-primary">立即注册</button>
         </div>
@@ -25,9 +17,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import InputItem from '../components/InputItem.vue'
 @Component({
   components: {
-
+    InputItem
   }
 })
 export default class Register extends Vue {}

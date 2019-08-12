@@ -3,12 +3,8 @@
     <div class="title">
       <h1>欢迎登录</h1>
       <form>
-        <div class="form-control">
-          <input type="text" name="email" placeholder="邮箱地址">
-        </div>
-        <div class="form-control">
-          <input type="password" name="password" placeholder="密码">
-        </div>
+        <InputItem type="email" name="email" placeholder="邮箱地址"></InputItem>
+        <InputItem type="password" name="password" placeholder="密码"></InputItem>
         <div class="form-control">
           <button type="button" class="btn btn-primary">提交</button>
         </div>
@@ -26,9 +22,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import InputItem from '../components/InputItem.vue'
 @Component({
   components: {
-
+    InputItem
   }
 })
 export default class Login extends Vue {
