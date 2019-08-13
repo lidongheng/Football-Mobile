@@ -20,7 +20,7 @@
         </a>
       </li>
       <li>
-        <a href="/login">
+        <a href="/me">
           <span class="iconfont">&#xe62a;</span>
           <p class="iconTitle">我</p>
         </a>

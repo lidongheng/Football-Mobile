@@ -2,11 +2,11 @@
   <div class="login">
     <div class="title">
       <h1>欢迎登录</h1>
-      <form>
-        <InputItem type="email" name="email" placeholder="邮箱地址"></InputItem>
-        <InputItem type="password" name="password" placeholder="密码"></InputItem>
+      <form @submit.prevent="onSubmit">
+        <InputItem type="email" name="email" placeholder="邮箱地址" v-model="formData.email"></InputItem>
+        <InputItem type="password" name="password" placeholder="密码" v-model="formData.password"></InputItem>
         <div class="form-control">
-          <button type="button" class="btn btn-primary">提交</button>
+          <button type="submit" class="btn btn-primary" :disabled="loginStatus">登录</button>
         </div>
       </form>
       <div class="register-title">
@@ -21,16 +21,42 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import InputItem from '../components/InputItem.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     InputItem
   }
 })
 export default class Login extends Vue {
+  @Action('setUser') setUser: any
+  @Provide() formData: {
+    email: String;
+    password: String;
+  } = {
+    email: '',
+    password: ''
+  }
+  @Provide() loginStatus:boolean = false
   goToRegister () {
     this.$router.push({ name: 'register' })
+  }
+  onSubmit () {
+    this.loginStatus = true;
+    (this as any).$axios.post('/api/users/login', this.formData)
+      .then((res: any) => {
+        console.log(res)
+        localStorage.setItem('Token', res.data.token)
+        localStorage.setItem('username', res.data.username)
+        this.setUser(res.data.token)
+        this.loginStatus = false
+        this.$router.push('/')
+      })
+      .catch((err: any) => {
+        this.loginStatus = false
+        console.log(err)
+      })
   }
 }
 </script>

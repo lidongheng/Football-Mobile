@@ -1,7 +1,7 @@
 <template>
   <div class="form-control">
     <input :type="type" :name="name" :placeholder="placeholder"
-           @input="updateValue($event,target.value)"/>
+           @input="updateValue($event.target.value)"/>
   </div>
 </template>
 

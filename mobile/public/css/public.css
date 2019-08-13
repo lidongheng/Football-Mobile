@@ -52,6 +52,9 @@ button {
 .btn-primary:hover {
     background: #B9DCFF;
 }
+.btn-primary:disabled {
+    background: #B9DCFF;
+}
 
 /* 表单项 */
 
