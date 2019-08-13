@@ -64,6 +64,12 @@
           <p>意甲</p>
         </a>
       </li>
+      <li>
+        <router-link to="/bet/add" tag="a">
+          <span class="iconfont">&#xe6ff;</span>
+          <p>模拟投注</p>
+        </router-link>
+      </li>
     </ul>
     <Layout :display="display" text="暂未开放，敬请期待~"></Layout>
   </div>
