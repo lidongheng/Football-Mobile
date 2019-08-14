@@ -1,5 +1,9 @@
 <template>
   <div class="bets-detail">
+    <div class="search">
+      <span class="iconfont">&#xe604;</span>
+      <input class="search-bar" type="text" name="search" value="" placeholder="搜索球队名">
+    </div>
     <div class="bets-order-box">
       <div class="bets-order-header">
         <div class="order">
@@ -37,6 +41,23 @@ export default class BetsDetail extends Vue {}
     padding: .266666rem 0;
     font-size: .4666666rem;
     box-sizing: content-box;
+  }
+  .search {
+    position: relative;
+    padding: .2rem .3rem;
+  }
+  .search .iconfont {
+    position: absolute;
+    top: .4666666rem;
+    left: .5133333rem;
+  }
+  .search .search-bar {
+    width: 6.6666666rem;
+    height: .8266666rem;
+    border: 1px solid #cdcdcd;
+    border-radius: .66666666rem;
+    padding-left: .7466666rem;
+    outline: none;
   }
   .bets-order-box {
     display: flex;
