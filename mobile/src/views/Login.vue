@@ -17,6 +17,7 @@
         <button type="button" class="btn btn-light" @click="goToRegister">注册</button>
       </div>
     </div>
+    <Layout :show="isLayoutShow" :text="errorMsg"></Layout>
   </div>
 </template>
 
@@ -24,13 +25,18 @@
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import InputItem from '../components/InputItem.vue'
 import { State, Getter, Mutation, Action } from 'vuex-class'
+import Layout from '../components/Layout.vue'
 @Component({
   components: {
-    InputItem
+    InputItem,
+    Layout
   }
 })
 export default class Login extends Vue {
   @Action('setUser') setUser: any
+  @Provide() loginStatus:boolean = false
+  @Provide() isLayoutShow: boolean = false
+  @Provide() errorMsg: string = ''
   @Provide() formData: {
     email: String;
     password: String;
@@ -38,15 +44,21 @@ export default class Login extends Vue {
     email: '',
     password: ''
   }
-  @Provide() loginStatus:boolean = false
   goToRegister () {
     this.$router.push({ name: 'register' })
+  }
+  showLayout () {
+    this.isLayoutShow = true
+    let that = this
+    setTimeout(function () {
+      that.isLayoutShow = false
+      that.errorMsg = ''
+    }, 3900)
   }
   onSubmit () {
     this.loginStatus = true;
     (this as any).$axios.post('/api/users/login', this.formData)
       .then((res: any) => {
-        console.log(res)
         localStorage.setItem('Token', res.data.token)
         localStorage.setItem('username', res.data.username)
         this.setUser(res.data.token)
@@ -55,7 +67,15 @@ export default class Login extends Vue {
       })
       .catch((err: any) => {
         this.loginStatus = false
-        console.log(err)
+        if (err.response.status === 400) {
+          for (const val in err.response.data.errors) {
+            this.errorMsg += err.response.data.errors[val] + ','
+          }
+          this.errorMsg = this.errorMsg.substr(0, this.errorMsg.length - 1)
+        } else {
+          this.errorMsg = '未知错误！'
+        }
+        this.showLayout()
       })
   }
 }

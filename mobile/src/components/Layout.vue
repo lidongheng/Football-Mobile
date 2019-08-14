@@ -1,5 +1,5 @@
 <template>
-  <div class="background" :style="{display: display}">
+  <div class="background" v-show="show">
     <div class="layout">
       <p>{{text}}</p>
     </div>
@@ -14,7 +14,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
   }
 })
 export default class Layout extends Vue {
-  @Prop(String) display!: string
+  @Prop(Boolean) show!: boolean
   @Prop(String) text!: string
 }
 </script>
@@ -26,14 +26,15 @@ export default class Layout extends Vue {
     left: 0;
     bottom: 0;
     right: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
   .layout {
     background: rgba(0,0,0,.8);
     border-radius: 10px;
-    animation: opa 2.3s ease;
-    -webkit-animation: opa 2.3s ease;
+    animation: opa 4s ease;
+    -webkit-animation: opa 4s ease;
   }
   p {
     color: #fff;

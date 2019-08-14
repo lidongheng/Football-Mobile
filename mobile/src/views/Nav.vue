@@ -71,7 +71,7 @@
         </router-link>
       </li>
     </ul>
-    <Layout :display="display" text="暂未开放，敬请期待~"></Layout>
+    <Layout :show="isLayoutShow" text="暂未开放，敬请期待~"></Layout>
   </div>
 </template>
 
@@ -85,12 +85,13 @@ import Layout from '../components/Layout.vue'
 })
 export default class Nav extends Vue {
   @Provide() display: string = 'none'
+  @Provide() isLayoutShow: boolean = false
   noContent () {
-    var that = this
-    that.display = 'flex'
+    this.isLayoutShow = true
+    let that = this
     setTimeout(function () {
-      that.display = 'none'
-    }, 2000)
+      that.isLayoutShow = false
+    }, 1900)
   }
 }
 </script>

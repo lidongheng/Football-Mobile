@@ -2,28 +2,73 @@
   <div class="register">
     <div class="title">
       <h1>欢迎注册</h1>
-      <form>
-        <InputItem type="text" name="username" placeholder="请输入用户名"></InputItem>
-        <InputItem type="email" name="email" placeholder="请输入邮箱地址"></InputItem>
-        <InputItem type="password" name="password" placeholder="请输入密码"></InputItem>
-        <InputItem type="password" name="password2" placeholder="请再次输入密码"></InputItem>
+      <form @submit.prevent="onSubmit">
+        <InputItem type="text" name="username" placeholder="请输入用户名" v-model="formData.username"></InputItem>
+        <InputItem type="email" name="email" placeholder="请输入邮箱地址" v-model="formData.email"></InputItem>
+        <InputItem type="password" name="password" placeholder="请输入密码" v-model="formData.password"></InputItem>
+        <InputItem type="password" name="password2" placeholder="请再次输入密码" v-model="formData.password2"></InputItem>
         <div class="form-control">
-          <button type="button" class="btn btn-primary">立即注册</button>
+          <button type="submit" class="btn btn-primary" :disabled="isRegister">立即注册</button>
         </div>
       </form>
     </div>
+    <Layout :show="isLayoutShow" :text="errorMsg"></Layout>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import InputItem from '../components/InputItem.vue'
+import Layout from '../components/Layout.vue'
 @Component({
   components: {
-    InputItem
+    InputItem,
+    Layout
   }
 })
-export default class Register extends Vue {}
+export default class Register extends Vue {
+  @Provide() isRegister: boolean = false
+  @Provide() isLayoutShow: boolean = false
+  @Provide() errorMsg: string = ''
+  @Provide() formData: {
+    username: string,
+    email: string,
+    password: string,
+    password2: string
+  } = {
+    username: '',
+    email: '',
+    password: '',
+    password2: ''
+  }
+  showLayout () {
+    this.isLayoutShow = true
+    let that = this
+    setTimeout(function () {
+      that.isLayoutShow = false
+      that.errorMsg = ''
+    }, 3900)
+  }
+  onSubmit () {
+    this.isRegister = true;
+    (this as any).$axios.post('/api/users/register', this.formData)
+      .then((res: any) => {
+        this.isRegister = false
+        this.$router.push({ name: 'nav' })
+      })
+      .catch((err: any) => {
+        this.isRegister = false
+        if (err.response.status === 400) {
+          for (const val in err.response.data.errors) {
+            this.errorMsg += err.response.data.errors[val]
+          }
+        } else {
+          this.errorMsg = '未知错误！'
+        }
+        this.showLayout()
+      })
+  }
+}
 </script>
 
 <style lang="scss" scoped>

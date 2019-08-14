@@ -29,20 +29,28 @@
       </table>
     </div>
     <div class="footer-wrapper">
-      <button type="button" class="btn">退出登录</button>
+      <button type="button" class="btn" @click="logOut">退出登录</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
 
   }
 })
 export default class Me extends Vue {
+  @Action('clearUser') clearUser: any
   @Provide() username: string = localStorage.username
+  logOut () {
+    localStorage.removeItem('Token')
+    localStorage.removeItem('username')
+    this.clearUser()
+    this.$router.push({ name: 'login' })
+  }
 }
 </script>
 
