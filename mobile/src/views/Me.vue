@@ -19,11 +19,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>20190813102103</td>
-            <td>600</td>
-            <td>利物浦vs托特纳姆热刺</td>
-            <td>曼联-0.25</td>
+          <tr v-for="(item,index) in this.betOrders" :key="index">
+            <td>{{item.serialNumber}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.host}}vs{{item.away}}</td>
+            <td>{{item.betTeam}}{{item.handicap}}</td>
           </tr>
         </tbody>
       </table>
@@ -45,6 +45,20 @@ import { State, Getter, Mutation, Action } from 'vuex-class'
 export default class Me extends Vue {
   @Action('clearUser') clearUser: any
   @Provide() username: string = localStorage.username
+  @Provide() betOrders: object = {}
+  created () {
+    this.getBetOrdersData()
+  }
+  getBetOrdersData () {
+    (this as any).$axios.get(`/api/bets/?q=&pageNow=1&pageSize=5`)
+      .then((res: any) => {
+        console.log(res)
+        this.betOrders = res.data.bets
+      })
+      .catch((err: any) => {
+        console.log(err)
+      })
+  }
   logOut () {
     localStorage.removeItem('Token')
     localStorage.removeItem('username')
@@ -59,7 +73,7 @@ export default class Me extends Vue {
     background: rgba(0,0,0,.04);
   }
   .header-wrapper {
-    height: 6.346666rem;
+    height: 4.8rem;
     width: 100%;
     background: #EBEBEB;
     display: flex;
@@ -68,8 +82,8 @@ export default class Me extends Vue {
     align-items: center;
   }
   .header-wrapper img {
-    width: 4.2666666rem;
-    height: 4.2666666rem;
+    width: 3.7rem;
+    height: 3.7rem;
     border-radius: 50%;
   }
   .header-wrapper span{
@@ -77,7 +91,7 @@ export default class Me extends Vue {
     margin-top: .133333rem;
   }
   .content-wrapper {
-    height: 9rem;
+    height: 8rem;
     width: 100%;
     background: #fff;
     margin-top: .266666rem;
