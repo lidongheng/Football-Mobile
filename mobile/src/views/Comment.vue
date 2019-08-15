@@ -1,46 +1,23 @@
 <template>
   <div class="comment">
-    <div class="comment-box">
+    <div class="comment-box" v-for="(item,index) in contents" :key="index">
       <div class="comment-header">
-        <span class="username">用户32358</span>
+        <span class="username">{{item.user.username}}</span>
       </div>
       <div class="comment-content">
-        <p class="content">正文内容。这周周末英超比赛有：利物浦vs诺维奇，莱斯特城vs狼队，曼联vs切尔西等</p>
-        <p class="time">08-08 16:36</p>
+        <p class="content">{{item.content}}</p>
+        <p class="time">{{item.date}}</p>
       </div>
       <div class="comment-operation">
-        <div class="like">
+        <div class="like" @click="onLikeClick(item._id)">
           <span class="iconfont">&#xe63a;</span>
-          <span class="description">55</span>
+          <span class="description">{{item.likes.length}}</span>
         </div>
-        <div class="unlike">
+        <div class="unlike" @click="onUnlikeClick(item._id)">
           <span class="iconfont">&#xe665;</span>
           <span class="description">踩</span>
         </div>
-        <div class="delete">
-          <span class="iconfont">&#xe73d;</span>
-          <span class="description">删</span>
-        </div>
-      </div>
-    </div>
-    <div class="comment-box">
-      <div class="comment-header">
-        <span class="username">用户32358</span>
-      </div>
-      <div class="comment-content">
-        <p class="content">正文内容。这周周末英超比赛有：利物浦vs诺维奇，莱斯特城vs狼队，曼联vs切尔西等</p>
-        <p class="time">08-08 16:36</p>
-      </div>
-      <div class="comment-operation">
-        <div class="like">
-          <span class="iconfont">&#xe63a;</span>
-          <span class="description">55</span>
-        </div>
-        <div class="unlike">
-          <span class="iconfont">&#xe665;</span>
-          <span class="description">踩</span>
-        </div>
-        <div class="delete">
+        <div class="delete" v-show="canDelete(item.user._id)" @click="onDelete(item._id)">
           <span class="iconfont">&#xe73d;</span>
           <span class="description">删</span>
         </div>
@@ -49,37 +26,125 @@
     <div class="add-comment">
       <a href="javascript:void(0);" @click="addInput">+</a>
     </div>
-    <div ref="inputComment" class="input-comment" style="display:none;">
-      <div class="input-comment-header">
-        <div class="left-button">
-          <button type="button" class="btn" @click="cancelInput">取消</button>
+    <div ref="inputComment" v-show="isShowTextarea" class="input-comment">
+      <form @submit.prevent="addComment">
+        <div class="input-comment-header">
+          <div class="left-button">
+            <button type="reset" class="btn" @click="cancelInput">取消</button>
+          </div>
+          <div class="center-title">
+            <span class="title">发热评</span>
+          </div>
+          <div class="right-button">
+            <button type="submit" class="submit">发送</button>
+          </div>
         </div>
-        <div class="center-title">
-          <span class="title">发热评</span>
-        </div>
-        <div class="right-button">
-          <button type="button">发送</button>
-        </div>
-      </div>
-      <TextAreaItem width="98%" name="inputComment" cols="30" rows="20" placeholder="分享新鲜事..."></TextAreaItem>
+        <TextAreaItem width="98%" name="inputComment" cols="30" rows="20" placeholder="分享新鲜事..." v-model="formData.content"></TextAreaItem>
+      </form>
     </div>
+    <Layout :show="isLayoutShow" :text="errorMsg"></Layout>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import TextAreaItem from '../components/TextareaItem.vue'
+import { commentDate } from '../utils/utils'
+import Layout from '../components/Layout.vue'
 @Component({
   components: {
-    TextAreaItem
+    TextAreaItem,
+    Layout
   }
 })
 export default class Comment extends Vue {
+  @Provide() isLayoutShow = false
+  @Provide() errorMsg: string = ''
+  @Provide() isShowTextarea: boolean = false
+  @Provide() contents: object = {}
+  @Provide() formData: {
+    content: String;
+  } = {
+    content: ''
+  }
   addInput () {
-    this.$refs.inputComment.style.display = 'block'
+    this.isShowTextarea = true
   }
   cancelInput () {
-    this.$refs.inputComment.style.display = 'none'
+    this.isShowTextarea = false
+  }
+  showLayout () {
+    this.isLayoutShow = true
+    let that = this
+    setTimeout(function () {
+      that.isLayoutShow = false
+      that.errorMsg = ''
+    }, 3900)
+  }
+  created () {
+    this.getData()
+  }
+  getData () {
+    (this as any).$axios.get('/api/comment/1/')
+      .then((res:any) => {
+        if (res.status === 200) {
+          console.log(res)
+          if (res.data.length !== 0) {
+            res.data.contents.map((item:any) => {
+              item.date = commentDate(item.date)
+            })
+            this.contents = res.data.contents
+          }
+        }
+      })
+      .catch((err:any) => {
+        console.log(err)
+      })
+  }
+  canDelete (id:string) {
+    return (localStorage.getItem('userId') && localStorage.getItem('userId') === id)
+  }
+  onDelete (id: string) {
+    (this as any).$axios.delete(`/api/comment/${id}/`)
+      .then((res:any) => this.getData())
+      .catch((err:any) => {
+        this.errorMsg = err.response.data.message
+        this.showLayout()
+      })
+  }
+  onLikeClick (id: string) {
+    (this as any).$axios.post(`/api/comment/like/${id}/`)
+      .then((res:any) => this.getData())
+      .catch((err:any) => {
+        this.errorMsg = err.response.data.message
+        this.showLayout()
+      })
+  }
+  onUnlikeClick (id: string) {
+    (this as any).$axios.post(`/api/comment/unlike/${id}/`)
+      .then((res:any) => this.getData())
+      .catch((err:any) => {
+        this.errorMsg = err.response.data.message
+        this.showLayout()
+      })
+  }
+  addComment () {
+    if (this.formData.content === '') {
+      this.errorMsg = '发送热评不能为空'
+      this.showLayout()
+      return null
+    }
+    (this as any).$axios.post('/api/comment/', this.formData)
+      .then((res:any) => {
+        if (res.status === 200) {
+          this.cancelInput()
+          this.getData()
+        }
+      })
+      .catch((err:any) => {
+        this.errorMsg = err.response.data.message
+        this.showLayout()
+      })
   }
 }
 </script>
@@ -161,6 +226,12 @@ export default class Comment extends Vue {
     bottom: 0;
     right: 0;
     background-color: #fff;
+    display: block;
+    animation: appear .5s ease;
+  }
+  @keyframes appear {
+    0% {top: 100vh;}
+    100% {top: 0;}
   }
   .input-comment .input-comment-header {
     height: 8vh;
@@ -184,7 +255,7 @@ export default class Comment extends Vue {
     justify-content: center;
     align-items: center;
   }
-  .input-comment>.input-comment-header>.right-button>button {
+  .input-comment .input-comment-header .right-button button {
     background-color: orange;
     color: #fff;
     border-radius: .1066666rem;

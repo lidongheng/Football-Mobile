@@ -1,6 +1,6 @@
 <template>
   <div class="form-control" :style="{width: this.width}">
-    <textarea :name="name" :cols="cols" :rows="rows" :placeholder="placeholder"></textarea>
+    <textarea :name="name" :cols="cols" :rows="rows" :placeholder="placeholder" v-on:input="updateValue($event.target.value)"></textarea>
   </div>
 </template>
 
@@ -17,6 +17,9 @@ export default class TextareaItem extends Vue {
   @Prop(String) rows!: String
   @Prop(String) placeholder!: String
   @Prop({ default: '80%' }) width!: String
+  updateValue (val:string) {
+    this.$emit('input', val)
+  }
 }
 </script>
 
