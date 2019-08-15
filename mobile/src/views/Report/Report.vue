@@ -3,23 +3,43 @@
     <div class="new_article">
       <button class="btn btn-primary" @click="add">新增报告</button>
     </div>
-    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
-    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
-    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
+    <div v-for="(item,index) in report" :key="index">
+      <NewsItem :year="item.year" :date="item.date" :href="item.href" :title="item.title"></NewsItem>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import NewsItem from '../../components/NewsItem.vue'
+import { year, articleDate } from '@/utils/utils'
 @Component({
   components: {
     NewsItem
   }
 })
 export default class Report extends Vue {
+  @Provide() report: Array<object> = []
   add () {
     this.$router.push({ name: 'addReport' })
+  }
+  created () {
+    this.getData()
+  }
+  getData () {
+    (this as any).$axios.get('/api/betForm/match/1/')
+      .then((res:any) => {
+        res.data.match.forEach((item:any) => {
+          item.year = year(item.date)
+          item.date = articleDate(item.date)
+          item.href = `/report/${item._id}/`
+          item.title = `${item.host} vs ${item.away}`
+        })
+        this.report = res.data.match
+      })
+      .catch((err:any) => {
+        console.log(err)
+      })
   }
 }
 </script>

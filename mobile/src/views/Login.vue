@@ -71,6 +71,7 @@ export default class Login extends Vue {
         if (err.response.status === 400) {
           for (const val in err.response.data.errors) {
             this.errorMsg += err.response.data.errors[val] + ','
+            break
           }
           this.errorMsg = this.errorMsg.substr(0, this.errorMsg.length - 1)
         } else {

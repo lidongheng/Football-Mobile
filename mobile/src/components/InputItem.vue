@@ -33,11 +33,4 @@ export default class Home extends Vue {
     font-size: .42666666rem;
     padding-left: .2rem;
   }
-  .form-control {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 </style>

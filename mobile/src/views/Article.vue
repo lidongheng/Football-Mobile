@@ -3,21 +3,43 @@
     <div class="theme">
       <h1>文章</h1>
     </div>
-    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
-    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
-    <NewsItem year="2019" date="08.11" href="/" title="新赛季的输盘王到底是谁？利物浦还是纽卡斯尔联"></NewsItem>
+    <div class="noContent" v-show="contentsLength===0">暂无文章</div>
+    <div v-for="(item,index) in articles" :key="index">
+      <NewsItem :year="item.year" :date="item.date" :href="item.href" :title="item.title"/>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import NewsItem from '../components/NewsItem.vue'
+import { year, articleDate } from '@/utils/utils'
 @Component({
   components: {
     NewsItem
   }
 })
-export default class Article extends Vue {}
+export default class Article extends Vue {
+  @Provide() articles: Array<object> = []
+  get contentsLength () {
+    return this.articles.length
+  }
+  created () {
+    this.getData()
+  }
+  getData () {
+    (this as any).$axios.get('/api/articles/')
+      .then((res:any) => {
+        res.data.article.forEach((item:any) => {
+          item.year = year(item.date)
+          item.date = articleDate(item.date)
+          item.href = `/article/${item._id}/`
+        })
+        this.articles = res.data.article
+      })
+      .catch((err:any) => console.log(err))
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -67,5 +89,9 @@ export default class Article extends Vue {}
     font-size: .48rem;
     color: #333;
     display: inline-block;
+  }
+  .noContent {
+    font-size: .4666666rem;
+    text-align: center;
   }
 </style>
