@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator'
-import NewsItem from '../components/NewsItem.vue'
+import NewsItem from '../../components/NewsItem.vue'
 import { year, articleDate } from '@/utils/utils'
 @Component({
   components: {

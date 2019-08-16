@@ -6,7 +6,7 @@
     </div>
     <div class="title-wrapper">
       <div class="title">
-        <a :href="href">{{title}}</a>
+        <router-link :to="href" tag="a">{{title}}</router-link>
       </div>
     </div>
   </div>
