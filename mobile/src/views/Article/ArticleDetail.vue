@@ -7,6 +7,10 @@
       <div class="title">
         <h1>{{article.title}}</h1>
       </div>
+      <div class="user">
+        <span>作者：{{article.user}}</span>
+        <span>时间：{{article.date}}</span>
+      </div>
       <div class="content" v-for="(item,index) in article.paragraph" :key="index">
         <p>{{item}}</p>
       </div>
@@ -74,6 +78,13 @@ export default class ArticleDetail extends Vue {
     text-align: justify;
     line-height: .9rem;
     font-family: '微软雅黑';
+  }
+  .user {
+    color: rgba(0,0,0,.56);
+    display: flex;
+    justify-content: space-around;
+    font-size: .4266666rem;
+    margin: .4rem 0;
   }
   .content p{
     font-size: .4266666rem;
