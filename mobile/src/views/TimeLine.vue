@@ -1,30 +1,44 @@
 <template>
   <div class="timeLine">
-    <ul>
-      <li>
-        <div class="left"></div>
-        <div class="center">
-          03-10
-        </div>
-        <div class="right">
-          感谢您在京东购物，欢迎您再次光临！感谢您在京东购物，欢迎您再次光临！
-          感谢您在京东购物，欢迎您再次光临！感谢您在京东购物，欢迎您再次光临！
-          感谢您在京东购物，欢迎您再次光临！感谢您在京东购物，欢迎您再次光临！
-          感谢您在京东购物，欢迎您再次光临！感谢您在京东购物，欢迎您再次光临！
-        </div>
-      </li>
-    </ul>
+    <div v-for="(item,index) in timeline" :key="index">
+      <ul>
+        <li>
+          <div class="left"></div>
+          <div class="center">
+            {{item.date}}
+          </div>
+          <div class="right">
+            {{item.event}} <span style="color:red;">{{item.desc}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 @Component({
   components: {
 
   }
 })
-export default class TimeLine extends Vue {}
+export default class TimeLine extends Vue {
+  @Provide() timeline: Array<object> = []
+  created () {
+    this.getData()
+  }
+  getData () {
+    (this as any).$axios.get('/api/timeline/')
+      .then((res:any) => {
+        this.timeline = res.data.timeline
+        console.log(res.data.timeline)
+      })
+      .catch((err:any) => {
+        console.log(err)
+      })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -37,6 +51,7 @@ export default class TimeLine extends Vue {}
   li {
     border-left: 1px solid #89c7ff;
     margin-left: .2666666rem;
+    line-height: 2;
   }
   .left {
     position: relative;

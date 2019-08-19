@@ -3,7 +3,7 @@
     <div class="back-wrapper" @click="back">
       <span class="iconfont">&#xe66a;</span>
     </div>
-    <div class="title-wrapper">标题栏</div>
+    <div class="title-wrapper">首页</div>
     <div class="share-wrapper" @click="noContent">
       <span class="iconfont">&#xe64e;</span>
     </div>

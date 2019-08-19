@@ -48,8 +48,7 @@ export default class ArticleDetail extends Vue {
     this.getData()
   }
   getData () {
-    const id = this.$route.params.id
-    console.log(id);
+    const id = this.$route.params.id;
     (this as any).$axios.get(`/api/articles/${id}/`)
       .then((res:any) => {
         this.article.label = res.data.article.label

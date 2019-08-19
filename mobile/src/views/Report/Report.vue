@@ -3,9 +3,10 @@
     <div class="new_article">
       <button class="btn btn-primary" @click="add">新增报告</button>
     </div>
-    <div v-for="(item,index) in report" :key="index">
-      <NewsItem :year="item.year" :date="item.date" :href="item.href" :title="item.title"></NewsItem>
+    <div class="newsItem" v-for="(item,index) in report" :key="index" @click.prevent="noContent">
+      <NewsItem :year="item.year" :date="item.date" href="#" :title="item.title"></NewsItem>
     </div>
+    <Layout :show="isLayoutShow" :text="errorMsg"></Layout>
   </div>
 </template>
 
@@ -13,12 +14,16 @@
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import NewsItem from '../../components/NewsItem.vue'
 import { year, articleDate } from '@/utils/utils'
+import Layout from '../../components/Layout.vue'
 @Component({
   components: {
-    NewsItem
+    NewsItem,
+    Layout
   }
 })
 export default class Report extends Vue {
+  @Provide() isLayoutShow: boolean = false
+  @Provide() errorMsg: string = '暂未开放，敬请期待~'
   @Provide() report: Array<object> = []
   add () {
     this.$router.push({ name: 'addReport' })
@@ -41,6 +46,13 @@ export default class Report extends Vue {
         console.log(err)
       })
   }
+  noContent () {
+    this.isLayoutShow = true
+    let that = this
+    setTimeout(function () {
+      that.isLayoutShow = false
+    }, 3900)
+  }
 }
 </script>
 
@@ -50,5 +62,9 @@ export default class Report extends Vue {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .newsItem {
+    width: 80%;
+    margin: 0 auto;
   }
 </style>

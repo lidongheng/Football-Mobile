@@ -1,14 +1,14 @@
 <template>
   <div class="nav">
     <div class="banner">
-
+      <img :src="require('@/assets/banner.jpg')" alt=""/>
     </div>
     <ul>
       <li>
-        <router-link to="/news" name="news" tag="a">
+        <a href="" @click.prevent="noContent">
           <span class="iconfont">&#xe6f1;</span>
           <p>资讯</p>
-        </router-link>
+        </a>
       </li>
       <li>
         <router-link to="/report" name="report" tag="a">
@@ -102,8 +102,11 @@ export default class Nav extends Vue {
     height: 100%;
   }
   .banner {
-    height: 3.3333333rem;
-    background: gray;
+    height: 6.3333333rem;
+  }
+  .banner img {
+    width: 100%;
+    height: 100%;
   }
   ul {
     display: flex;
