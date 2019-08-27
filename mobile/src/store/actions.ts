@@ -8,6 +8,9 @@ const actions: ActionTree<any, any> = {
   },
   async clearUser ({ state, commit }) {
     commit('CLEAR_USER')
+  },
+  async setTitle ({ state, commit }, title: string) {
+    commit('SET_TITLE', title)
   }
 }
 

@@ -21,12 +21,14 @@
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import { articleDate } from '@/utils/utils'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
 
   }
 })
 export default class ArticleDetail extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() article: {
     label: String;
     about: Array<any>;
@@ -46,6 +48,7 @@ export default class ArticleDetail extends Vue {
   }
   created () {
     this.getData()
+    this.setTitle('文章详情')
   }
   getData () {
     const id = this.$route.params.id;

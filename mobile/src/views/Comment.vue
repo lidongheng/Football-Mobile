@@ -51,6 +51,7 @@ import { Component, Vue, Provide } from 'vue-property-decorator'
 import TextAreaItem from '../components/TextareaItem.vue'
 import { commentDate } from '../utils/utils'
 import Layout from '../components/Layout.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     TextAreaItem,
@@ -58,6 +59,7 @@ import Layout from '../components/Layout.vue'
   }
 })
 export default class Comment extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() isLayoutShow = false
   @Provide() errorMsg: string = ''
   @Provide() isShowTextarea: boolean = false
@@ -83,6 +85,7 @@ export default class Comment extends Vue {
   }
   created () {
     this.getData()
+    this.setTitle('热评')
   }
   getData () {
     (this as any).$axios.get('/api/comment/1/')

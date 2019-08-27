@@ -35,7 +35,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/premierLeague" name="premierLeague" tag="a">
+        <router-link to="/premierLeague" tag="a">
           <span class="iconfont">&#xe61d;</span>
           <p>英超</p>
         </router-link>
@@ -48,12 +48,6 @@
       </li>
       <li>
         <a href="" @click.prevent="noContent">
-          <span class="iconfont">&#xe8fb;</span>
-          <p>中超</p>
-        </a>
-      </li>
-      <li>
-        <a href="" @click.prevent="noContent">
         <span class="iconfont">&#xe638;</span>
         <p>德甲</p>
         </a>
@@ -62,6 +56,18 @@
         <a href="" @click.prevent="noContent">
           <span class="iconfont">&#xe53f;</span>
           <p>意甲</p>
+        </a>
+      </li>
+      <li>
+        <a href="" @click.prevent="noContent">
+          <span class="iconfont">&#xeb65;</span>
+          <p>法甲</p>
+        </a>
+      </li>
+      <li>
+        <a href="" @click.prevent="noContent">
+          <span class="iconfont">&#xe8fb;</span>
+          <p>中超</p>
         </a>
       </li>
       <li>
@@ -78,14 +84,19 @@
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import Layout from '../components/Layout.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     Layout
   }
 })
 export default class Nav extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() display: string = 'none'
   @Provide() isLayoutShow: boolean = false
+  created () {
+    this.setTitle('首页')
+  }
   noContent () {
     this.isLayoutShow = true
     let that = this

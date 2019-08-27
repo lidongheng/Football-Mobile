@@ -22,12 +22,18 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import InputItem from '../../components/InputItem.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     InputItem
   }
 })
-export default class AddBet extends Vue {}
+export default class AddBet extends Vue {
+  @Action('setTitle') setTitle: any
+  created () {
+    this.setTitle('新增投注单')
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -34,6 +34,7 @@ import Layout from '../components/Layout.vue'
 })
 export default class Login extends Vue {
   @Action('setUser') setUser: any
+  @Action('setTitle') setTitle: any
   @Provide() loginStatus:boolean = false
   @Provide() isLayoutShow: boolean = false
   @Provide() errorMsg: string = ''
@@ -43,6 +44,9 @@ export default class Login extends Vue {
   } = {
     email: '',
     password: ''
+  }
+  created () {
+    this.setTitle('登录')
   }
   goToRegister () {
     this.$router.push({ name: 'register' })

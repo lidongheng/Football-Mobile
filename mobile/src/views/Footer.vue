@@ -1,32 +1,36 @@
 <template>
-  <div class="footer">
-    <ul>
-      <li>
-        <a href="/">
-          <span class="iconfont">&#xe608;</span>
-          <p class="iconTitle">首页</p>
-        </a>
-      </li>
-      <li>
-        <a href="/team">
-          <span class="iconfont">&#xe69a;</span>
-          <p class="iconTitle">球队</p>
-        </a>
-      </li>
-      <li>
-        <a href="/match">
-          <span class="iconfont">&#xe63f;</span>
-          <p class="iconTitle">比赛</p>
-        </a>
-      </li>
-      <li>
-        <a href="/me">
-          <span class="iconfont">&#xe62a;</span>
-          <p class="iconTitle">我</p>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <section>
+    <div style="height: 10vh;width: 100vw; background: #ffffff;"> </div>
+    <div class="footer">
+      <ul>
+        <li>
+          <a href="/">
+            <span class="iconfont">&#xe608;</span>
+            <p class="iconTitle">首页</p>
+          </a>
+        </li>
+        <li>
+          <a href="/team">
+            <span class="iconfont">&#xe69a;</span>
+            <p class="iconTitle">球队</p>
+          </a>
+        </li>
+        <li>
+          <a href="/match">
+            <span class="iconfont">&#xe63f;</span>
+            <p class="iconTitle">比赛</p>
+          </a>
+        </li>
+        <li>
+          <a href="/me">
+            <span class="iconfont">&#xe62a;</span>
+            <p class="iconTitle">我</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
 </template>
 
 <script lang="ts">
@@ -43,10 +47,14 @@ export default class Footer extends Vue {}
 <style lang="scss" scoped>
   @import url(../../public/css/font.css);
   .footer {
-    height: 100%;
+    height: 10vh;
     width: 100%;
     padding: .133333rem 0;
     border-top: 1px solid #c6c0b3;
+    position: fixed;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 99999;
   }
   ul {
     display: flex;

@@ -6,6 +6,9 @@ const mutations: MutationTree<any> = {
   },
   CLEAR_USER (state: any):void {
     state.user = null
+  },
+  SET_TITLE (state: any, title: string):void {
+    state.title = title
   }
 }
 

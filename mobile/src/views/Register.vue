@@ -20,6 +20,7 @@
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import InputItem from '../components/InputItem.vue'
 import Layout from '../components/Layout.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     InputItem,
@@ -27,6 +28,7 @@ import Layout from '../components/Layout.vue'
   }
 })
 export default class Register extends Vue {
+  @Action('setTitle') setTitle: any;
   @Provide() isRegister: boolean = false
   @Provide() isLayoutShow: boolean = false
   @Provide() errorMsg: string = ''
@@ -40,6 +42,9 @@ export default class Register extends Vue {
     email: '',
     password: '',
     password2: ''
+  }
+  created () {
+    this.setTitle('注册')
   }
   showLayout () {
     this.isLayoutShow = true

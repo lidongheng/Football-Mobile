@@ -14,18 +14,21 @@
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import NewsItem from '../../components/NewsItem.vue'
 import { year, articleDate } from '@/utils/utils'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     NewsItem
   }
 })
 export default class Article extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() articles: Array<object> = []
   get contentsLength () {
     return this.articles.length
   }
   created () {
     this.getData()
+    this.setTitle('文章')
   }
   getData () {
     (this as any).$axios.get('/api/articles/')

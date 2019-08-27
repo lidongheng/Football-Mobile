@@ -44,10 +44,12 @@ import { State, Getter, Mutation, Action } from 'vuex-class'
 })
 export default class Me extends Vue {
   @Action('clearUser') clearUser: any
+  @Action('setTitle') setTitle: any
   @Provide() username: string = localStorage.username
   @Provide() betOrders: object = {}
   created () {
     this.getBetOrdersData()
+    this.setTitle('我')
   }
   getBetOrdersData () {
     (this as any).$axios.get(`/api/bets/?q=&pageNow=1&pageSize=5`)
@@ -127,5 +129,8 @@ export default class Me extends Vue {
     color: #dc3545;
     letter-spacing: 1px;
     background: #fff;
+    height: 1rem;
+    border-bottom: 5px solid #ededed;
+    border-top: 2px solid #ededed;
   }
 </style>

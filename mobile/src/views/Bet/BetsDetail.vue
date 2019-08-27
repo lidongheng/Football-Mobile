@@ -27,12 +27,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
 
   }
 })
-export default class BetsDetail extends Vue {}
+export default class BetsDetail extends Vue {
+  @Action('setTitle') setTitle: any
+  created () {
+    this.setTitle('投注单详情')
+  }
+}
 </script>
 
 <style lang="scss" scoped>

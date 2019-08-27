@@ -3,7 +3,7 @@
     <div class="back-wrapper" @click="back">
       <span class="iconfont">&#xe66a;</span>
     </div>
-    <div class="title-wrapper">首页</div>
+    <div class="title-wrapper">{{getTitle}}</div>
     <div class="share-wrapper" @click="noContent">
       <span class="iconfont">&#xe64e;</span>
     </div>
@@ -21,6 +21,7 @@ import Layout from '../components/Layout.vue'
   }
 })
 export default class Header extends Vue {
+  @Getter('title') getTitle: any;
   back () {
     this.$router.go(-1)
   }

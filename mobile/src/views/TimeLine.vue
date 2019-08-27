@@ -18,15 +18,18 @@
 
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
 
   }
 })
 export default class TimeLine extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() timeline: Array<object> = []
   created () {
     this.getData()
+    this.setTitle('时间线')
   }
   getData () {
     (this as any).$axios.get('/api/timeline/')

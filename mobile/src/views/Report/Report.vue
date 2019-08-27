@@ -15,6 +15,7 @@ import { Component, Vue, Provide } from 'vue-property-decorator'
 import NewsItem from '../../components/NewsItem.vue'
 import { year, articleDate } from '@/utils/utils'
 import Layout from '../../components/Layout.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     NewsItem,
@@ -22,14 +23,16 @@ import Layout from '../../components/Layout.vue'
   }
 })
 export default class Report extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() isLayoutShow: boolean = false
   @Provide() errorMsg: string = '暂未开放，敬请期待~'
   @Provide() report: Array<object> = []
-  add () {
-    this.$router.push({ name: 'addReport' })
-  }
   created () {
     this.getData()
+    this.setTitle('报告')
+  }
+  add () {
+    this.$router.push({ name: 'addReport' })
   }
   getData () {
     (this as any).$axios.get('/api/betForm/match/1/')

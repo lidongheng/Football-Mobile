@@ -38,6 +38,7 @@ import { Component, Vue, Provide } from 'vue-property-decorator'
 import InputItem from '../../components/InputItem.vue'
 import TextareaItem from '../../components/TextareaItem.vue'
 import Layout from '../../components/Layout.vue'
+import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
   components: {
     InputItem,
@@ -46,6 +47,7 @@ import Layout from '../../components/Layout.vue'
   }
 })
 export default class AddReport extends Vue {
+  @Action('setTitle') setTitle: any
   @Provide() isLayoutShow: boolean = false
   @Provide() errorMsg: string = ''
   @Provide() formData: {
@@ -80,6 +82,9 @@ export default class AddReport extends Vue {
     awayExpectBench: '',
     hostNews: '',
     awayNews: ''
+  }
+  created () {
+    this.setTitle('新增报告')
   }
   showLayout () {
     this.isLayoutShow = true
