@@ -54,7 +54,6 @@ export default class Me extends Vue {
   getBetOrdersData () {
     (this as any).$axios.get(`/api/bets/?q=&pageNow=1&pageSize=5`)
       .then((res: any) => {
-        console.log(res)
         this.betOrders = res.data.bets
       })
       .catch((err: any) => {

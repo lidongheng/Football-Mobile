@@ -4,28 +4,28 @@
     <div class="footer">
       <ul>
         <li>
-          <a href="/">
+          <router-link to="/" tag="a">
             <span class="iconfont">&#xe608;</span>
             <p class="iconTitle">首页</p>
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="/team">
+          <router-link to="/team" tag="a">
             <span class="iconfont">&#xe69a;</span>
             <p class="iconTitle">球队</p>
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="/match">
+          <router-link to="/match" tag="a">
             <span class="iconfont">&#xe63f;</span>
             <p class="iconTitle">比赛</p>
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="/me">
+          <router-link to="/me" tag="a">
             <span class="iconfont">&#xe62a;</span>
             <p class="iconTitle">我</p>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>

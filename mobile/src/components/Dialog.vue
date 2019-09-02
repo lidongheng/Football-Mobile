@@ -37,7 +37,7 @@
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-block btn-primary btn-confirm" @click="close">注单已确认</button>
+          <button type="button" style="width: 100%;margin-top: 1.2rem;" class="btn btn-block btn-primary btn-confirm" @click="close">注单已确认</button>
         </div>
       </div>
     </div>
@@ -60,6 +60,9 @@ export default class Dialog extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  .dialog-wrapper {
+    font-size: .4266666rem;
+  }
   .background-dialog {
     position: fixed;
     top: 0;
@@ -72,8 +75,8 @@ export default class Dialog extends Vue {
     align-items: center;
   }
   .dialog {
-    width: 300px;
-    height: 427px;
+    width: 8rem;
+    height: 11.3866666rem;
     background: #fdfdfd;
     border-radius: 5%;
     overflow: hidden;
@@ -82,44 +85,44 @@ export default class Dialog extends Vue {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0 10px 0;
+    margin: .5333333rem 0 .2666666rem 0;
   }
   .league-wrapper p {
     padding: 0;
-    margin: 0 40px;
+    margin: 0 1.0666666rem;
     color: #333;
   }
   .line {
-    width: 2px;
-    height: 12px;
+    width: .0533333rem;
+    height: .32rem;
     border-radius: 20%;
     background: lightcoral;
     transform:rotate(15deg);
-    margin:2px;
+    margin: .0533333rem;
   }
   .match-wrapper {
     display: flex;
     justify-content: space-between;
-    margin: 0 40px;
+    margin: 0 1.0666666rem;
   }
   .bet-wrapper {
     background: #5FAAEB;
-    height: 100px;
-    margin: 20px 12px;
-    border-radius: 6px;
+    height: 2.6666666rem;
+    margin: .5333333rem .32rem;
+    border-radius: .16rem;
   }
   .bet-wrapper p {
     text-align: center;
     color: #fff;
   }
   .bet-wrapper p:nth-child(1) {
-    padding: 15px 0 10px 0;
+    padding: .4rem 0 .266666rem 0;
     margin: 0;
   }
   .confirm-wrapper {
     color: #5FAAEB;
     text-align: center;
-    margin: 10px 0 30px 0;
+    margin: .2666666rem 0 .8rem 0;
   }
   .info-wrapper {
     display: flex;
@@ -128,7 +131,7 @@ export default class Dialog extends Vue {
   .info-wrapper div{
     display: flex;
     justify-content: space-between;
-    margin:8px 12px;
+    margin: .21333333rem .32rem;
   }
   .btn-confirm {
     background: #5FBBEB;

@@ -1,5 +1,10 @@
 export const commentDate = (stringTime:string) => {
-  let date = new Date(stringTime)
+  let date: any
+  if (isNaN(Date.parse(stringTime))) {
+    date = new Date(Date.parse(stringTime.replace(/-/g, '/').replace(/T/, ' ')))
+  } else {
+    date = new Date(Date.parse(stringTime))
+  }
   let fmt = 'MM-dd HH:ii'
   if (/(M+)/.test(fmt)) { // 月
     let mouth: any = date.getMonth() + 1
@@ -33,7 +38,12 @@ export const commentDate = (stringTime:string) => {
 }
 
 export const year = (stringTime:string) => {
-  let date = new Date(stringTime)
+  let date: any
+  if (isNaN(Date.parse(stringTime))) {
+    date = new Date(Date.parse(stringTime.replace(/-/g, '/').replace(/T/, ' ')))
+  } else {
+    date = new Date(Date.parse(stringTime))
+  }
   let fmt = 'yyyy'
   if (/(y+)/.test(fmt)) { // 年
     let year = date.getFullYear().toString()
@@ -43,7 +53,12 @@ export const year = (stringTime:string) => {
 }
 
 export const articleDate = (stringTime:string) => {
-  let date = new Date(stringTime)
+  let date: any
+  if (isNaN(Date.parse(stringTime))) {
+    date = new Date(Date.parse(stringTime.replace(/-/g, '/').replace(/T/, ' ')))
+  } else {
+    date = new Date(Date.parse(stringTime))
+  }
   let fmt = 'MM-dd'
   if (/(M+)/.test(fmt)) { // 月
     let mouth: any = date.getMonth() + 1

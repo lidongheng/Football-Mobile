@@ -2,32 +2,33 @@
   <div class="bets-detail">
     <div class="search">
       <span class="iconfont">&#xe604;</span>
-      <input class="search-bar" type="text" name="search" value="" placeholder="搜索球队名">
+      <input class="search-bar" type="text" name="search" value="" placeholder="搜索球队名" @blur="searchTeam" v-model="team">
     </div>
-    <div class="bets-order-box">
+    <div class="bets-order-box" v-for="(item,index) in betOrders" :key="index">
       <div class="bets-order-header">
         <div class="order">
-          <span class="username">单号：20190813102103</span>
-          <span class="league">英超</span>
+          <span class="username">单号：{{item.serialNumber}}</span>
+          <span class="league">{{item.league}}</span>
         </div>
         <div>
-          <span>曼联vs切尔西</span>
+          <span>{{item.host}}vs{{item.away}}</span>
         </div>
         <div>
-          <span>曼联 -0.25 @ 0.89</span>
+          <span>{{item.betTeam}} {{item.handicap}} @ {{item.profit}}</span>
         </div>
       </div>
       <div class="bets-order-description">
-        <p class="content">我不会妥协，也不会逃避，弱肉强食的时代迈步前进，猛犸我不会妥协，也不会逃避，弱肉强食的时代迈步前进，猛犸</p>
-        <p class="time">08-08 16:36</p>
+        <p class="content">{{item.summary}}</p>
+        <p class="time">{{item.date}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 import { State, Getter, Mutation, Action } from 'vuex-class'
+import { commentDate } from '@/utils/utils'
 @Component({
   components: {
 
@@ -35,8 +36,30 @@ import { State, Getter, Mutation, Action } from 'vuex-class'
 })
 export default class BetsDetail extends Vue {
   @Action('setTitle') setTitle: any
+  @Provide() betOrders: Array<object> = []
+  @Provide() team: string = ''
   created () {
-    this.setTitle('投注单详情')
+    this.setTitle('投注单详情');
+    (this as any).$axios.get('/api/bets/1/')
+      .then((res:any) => {
+        this.betOrders = res.data.bets
+        this.betOrders.forEach((item:any) => {
+          item.date = commentDate(item.date)
+        })
+      })
+      .catch((err:any) => {
+        console.log(err)
+      })
+  }
+  searchTeam () {
+    (this as any).$axios.get(`/api/bets/?q=${this.team}&pageNow=1`)
+      .then((res:any) => {
+        this.betOrders = res.data.bets
+        this.$router.push({ path: `/bet/detail?q=${this.team}&pageNow=1` })
+      })
+      .catch((err:any) => {
+        console.log(err)
+      })
   }
 }
 </script>

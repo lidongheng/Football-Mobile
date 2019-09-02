@@ -180,20 +180,51 @@
                 <p>西班牙人</p>
               </router-link>
               </li>
+              <li><router-link to="/team/Granada/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/Laliga/Granada.jpg')" alt=""/>
+                </div>
+                <p>格拉纳达</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/RealSociedad/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/Laliga/RealSociedad.jpg')" alt=""/>
+                </div>
+                <p>皇家社会</p>
+              </router-link>
+              </li>
             </ul>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="logo">
-            <img :src="require('@/assets/images/league/serieA.png')" alt=""/>
+            <img :src="require('@/assets/images/league/Bundesliga.png')" alt=""/>
           </div>
           <div>
-            <p style="text-align: center;">暂无数据</p>
+            <div class="team-wrapper">
+              <ul>
+                <li><router-link to="/team/FrankFurt/" tag="a">
+                  <div class="team-logo">
+                    <img :src="require('@/assets/images/Bundesliga/FrankFurt.jpg')" alt=""/>
+                  </div>
+                  <p>法兰克福</p>
+                </router-link>
+                </li>
+                <li><router-link to="/team/Dusseldorf/" tag="a">
+                  <div class="team-logo">
+                    <img :src="require('@/assets/images/Bundesliga/Dusseldorf.jpg')" alt=""/>
+                  </div>
+                  <p>杜塞尔多夫</p>
+                </router-link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="logo">
-            <img :src="require('@/assets/images/league/Bundesliga.png')" alt=""/>
+            <img :src="require('@/assets/images/league/serieA.png')" alt=""/>
           </div>
           <div>
             <p style="text-align: center;">暂无数据</p>

@@ -59,7 +59,7 @@ export default class Register extends Vue {
     (this as any).$axios.post('/api/users/register', this.formData)
       .then((res: any) => {
         this.isRegister = false
-        this.$router.push({ name: 'nav' })
+        this.$router.push({ name: 'login' })
       })
       .catch((err: any) => {
         this.isRegister = false

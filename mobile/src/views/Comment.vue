@@ -17,7 +17,7 @@
           <span class="iconfont">&#xe665;</span>
           <span class="description">踩</span>
         </div>
-        <div class="delete" v-show="canDelete(item.user._id)" @click="onDelete(item._id)">
+        <div class="delete" v-show="canDelete(item.user)" @click="onDelete(item._id)">
           <span class="iconfont">&#xe73d;</span>
           <span class="description">删</span>
         </div>
@@ -49,7 +49,7 @@
 <script lang="ts">
 import { Component, Vue, Provide } from 'vue-property-decorator'
 import TextAreaItem from '../components/TextareaItem.vue'
-import { commentDate } from '../utils/utils'
+import { commentDate } from '@/utils/utils'
 import Layout from '../components/Layout.vue'
 import { State, Getter, Mutation, Action } from 'vuex-class'
 @Component({
