@@ -16,7 +16,7 @@ import NewsItem from '../../components/NewsItem.vue'
 import { year, articleDate } from '@/utils/utils'
 import Layout from '../../components/Layout.vue'
 import { State, Getter, Mutation, Action } from 'vuex-class'
-import Toggle from '../../mixins/Toggle'
+import Toggle from '../../mixins/toggle'
 @Component({
   components: {
     NewsItem,
