@@ -11,20 +11,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Provide } from 'vue-property-decorator'
+import { Component, Vue, Provide, Mixins } from 'vue-property-decorator'
 import NewsItem from '../../components/NewsItem.vue'
 import { year, articleDate } from '@/utils/utils'
 import Layout from '../../components/Layout.vue'
 import { State, Getter, Mutation, Action } from 'vuex-class'
+import Toggle from '../../mixins/Toggle'
 @Component({
   components: {
     NewsItem,
     Layout
   }
 })
-export default class Report extends Vue {
+export default class Report extends Mixins(Toggle) {
   @Action('setTitle') setTitle: any
-  @Provide() isLayoutShow: boolean = false
   @Provide() errorMsg: string = '暂未开放，敬请期待~'
   @Provide() report: Array<object> = []
   created () {
@@ -48,13 +48,6 @@ export default class Report extends Vue {
       .catch((err:any) => {
         console.log(err)
       })
-  }
-  noContent () {
-    this.isLayoutShow = true
-    let that = this
-    setTimeout(function () {
-      that.isLayoutShow = false
-    }, 3900)
   }
 }
 </script>

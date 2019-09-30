@@ -7,31 +7,24 @@
     <div class="share-wrapper" @click="noContent">
       <span class="iconfont">&#xe64e;</span>
     </div>
-    <Layout :display="display" text="暂未开放，敬请期待~"></Layout>
+    <Layout :show="isLayoutShow" text="暂未开放，敬请期待~"></Layout>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Provide } from 'vue-property-decorator'
+import { Component, Vue, Provide, Mixins } from 'vue-property-decorator'
 import { State, Getter, Mutation, Action } from 'vuex-class'
 import Layout from '../components/Layout.vue'
+import Toggle from '../mixins/toggle'
 @Component({
   components: {
     Layout
   }
 })
-export default class Header extends Vue {
+export default class Header extends Mixins(Toggle) {
   @Getter('title') getTitle: any;
   back () {
     this.$router.go(-1)
-  }
-  @Provide() display: string = 'none'
-  noContent () {
-    let that = this
-    that.display = 'flex'
-    setTimeout(function () {
-      that.display = 'none'
-    }, 2000)
   }
 }
 </script>

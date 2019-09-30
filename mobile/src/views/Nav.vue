@@ -82,27 +82,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Provide } from 'vue-property-decorator'
+import { Component, Vue, Provide, Mixins } from 'vue-property-decorator'
 import Layout from '../components/Layout.vue'
 import { State, Getter, Mutation, Action } from 'vuex-class'
+import Toggle from '../mixins/toggle'
 @Component({
   components: {
     Layout
   }
 })
-export default class Nav extends Vue {
+export default class Nav extends Mixins(Toggle) {
   @Action('setTitle') setTitle: any
   @Provide() display: string = 'none'
-  @Provide() isLayoutShow: boolean = false
   created () {
     this.setTitle('首页')
-  }
-  noContent () {
-    this.isLayoutShow = true
-    let that = this
-    setTimeout(function () {
-      that.isLayoutShow = false
-    }, 1900)
   }
 }
 </script>
