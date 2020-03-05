@@ -11,6 +11,11 @@ const RouterMap = [
     component: () => import('@/views/Nav.vue')
   },
   {
+    path: '/forecast',
+    name: 'forecast',
+    component: () => import('@/views/Forecast.vue')
+  },
+  {
     path: '/article',
     name: 'article',
     component: () => import('@/views/Article/Article.vue')
