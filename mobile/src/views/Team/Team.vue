@@ -349,6 +349,20 @@
                 <p>里昂</p>
               </router-link>
               </li>
+              <li><router-link to="/team/Tambov/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/EUROPA/Tambov.jpg')" alt=""/>
+                </div>
+                <p>坦波夫</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/KrylyaSovetov/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/EUROPA/KrylyaSovetov.jpg')" alt=""/>
+                </div>
+                <p>苏维埃之翼</p>
+              </router-link>
+              </li>
             </ul>
           </div>
         </div>
