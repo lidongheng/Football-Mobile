@@ -5,10 +5,10 @@
     </div>
     <ul>
       <li>
-        <a href="" @click.prevent="noContent">
+        <router-link to="/forecast" name="forecast" tag="a">
           <span class="iconfont">&#xe6f1;</span>
-          <p>资讯</p>
-        </a>
+          <p>预言</p>
+        </router-link>
       </li>
       <li>
         <router-link to="/report" name="report" tag="a">
