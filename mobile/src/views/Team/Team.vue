@@ -8,6 +8,29 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="logo">
+            <img :src="require('@/assets/images/league/KLeague.jpg')" alt=""/>
+          </div>
+          <div class="team-wrapper">
+            <ul>
+              <li><router-link to="/team/GangwonFC/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/GangwonFC.jpg')" alt=""/>
+                </div>
+                <p>江原FC</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/SangjuSangmu/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/SangjuSangmu.png')" alt=""/>
+                </div>
+                <p>尚州尚武</p>
+              </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="logo">
             <img :src="require('@/assets/images/league/premierLeague.png')" alt=""/>
           </div>
           <div class="team-wrapper">
