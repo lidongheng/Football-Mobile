@@ -26,6 +26,20 @@
                 <p>尚州尚武</p>
               </router-link>
               </li>
+              <li><router-link to="/team/Samsung/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/Samsung.png')" alt=""/>
+                </div>
+                <p>水原三星</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/UlsanHyundai/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/UlsanHyundai.jpg')" alt=""/>
+                </div>
+                <p>蔚山现代</p>
+              </router-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -295,6 +309,13 @@
                     <img :src="require('@/assets/images/Bundesliga/Paderborn.jpg')" alt=""/>
                   </div>
                   <p>帕德博恩</p>
+                </router-link>
+                </li>
+                <li><router-link to="/team/BerlinUnion/" tag="a">
+                  <div class="team-logo">
+                    <img :src="require('@/assets/images/Bundesliga/BerlinUnion.jpg')" alt=""/>
+                  </div>
+                  <p>柏林联合</p>
                 </router-link>
                 </li>
               </ul>
