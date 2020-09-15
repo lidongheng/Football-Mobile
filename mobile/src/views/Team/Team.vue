@@ -8,43 +8,6 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="logo">
-            <img :src="require('@/assets/images/league/KLeague.jpg')" alt=""/>
-          </div>
-          <div class="team-wrapper">
-            <ul>
-              <li><router-link to="/team/GangwonFC/" tag="a">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/KLeague/GangwonFC.jpg')" alt=""/>
-                </div>
-                <p>江原FC</p>
-              </router-link>
-              </li>
-              <li><router-link to="/team/SangjuSangmu/" tag="a">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/KLeague/SangjuSangmu.png')" alt=""/>
-                </div>
-                <p>尚州尚武</p>
-              </router-link>
-              </li>
-              <li><router-link to="/team/Samsung/" tag="a">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/KLeague/Samsung.png')" alt=""/>
-                </div>
-                <p>水原三星</p>
-              </router-link>
-              </li>
-              <li><router-link to="/team/UlsanHyundai/" tag="a">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/KLeague/UlsanHyundai.jpg')" alt=""/>
-                </div>
-                <p>蔚山现代</p>
-              </router-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="logo">
             <img :src="require('@/assets/images/league/premierLeague.png')" alt=""/>
           </div>
           <div class="team-wrapper">
@@ -125,13 +88,6 @@
                 <p>西汉姆联</p>
               </router-link>
               </li>
-              <li><router-link to="/team/Watford/">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/premierLeague/Watford.jpg')" alt=""/>
-                </div>
-                <p>沃特福德</p>
-              </router-link>
-              </li>
               <li><router-link to="/team/Southampton/" tag="a">
                 <div class="team-logo">
                   <img :src="require('@/assets/images/premierLeague/Southampton.jpg')" alt=""/>
@@ -139,8 +95,6 @@
                 <p>南安普顿</p>
               </router-link>
               </li>
-            </ul>
-            <ul>
               <li><router-link to="/team/CrystalPalace/" tag="a">
                 <div class="team-logo">
                   <img :src="require('@/assets/images/premierLeague/CrystalPalace.jpg')" alt=""/>
@@ -148,6 +102,8 @@
                 <p>水晶宫</p>
               </router-link>
               </li>
+            </ul>
+            <ul>
               <li><router-link to="/team/Burnley/" tag="a">
                 <div class="team-logo">
                   <img :src="require('@/assets/images/premierLeague/Burnley.jpg')" alt=""/>
@@ -155,15 +111,6 @@
                 <p>伯恩利</p>
               </router-link>
               </li>
-              <li><router-link to="/team/AFCBournemouth/" tag="a">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/premierLeague/AFCBournemouth.jpg')" alt=""/>
-                </div>
-                <p>伯恩茅斯</p>
-              </router-link>
-              </li>
-            </ul>
-            <ul>
               <li><router-link to="/team/AstonVilla/" tag="a">
                 <div class="team-logo">
                   <img :src="require('@/assets/images/premierLeague/AstonVilla.jpg')" alt=""/>
@@ -171,18 +118,34 @@
                 <p>阿斯顿维拉</p>
               </router-link>
               </li>
-              <li><router-link to="/team/Norwich/" tag="a">
-                <div class="team-logo">
-                  <img :src="require('@/assets/images/premierLeague/Norwich.jpg')" alt=""/>
-                </div>
-                <p>诺维奇</p>
-              </router-link>
-              </li>
               <li><router-link to="/team/NewCastle/" tag="a">
                 <div class="team-logo">
                   <img :src="require('@/assets/images/premierLeague/NewCastle.jpg')" alt=""/>
                 </div>
                 <p>纽卡斯尔联</p>
+              </router-link>
+              </li>
+            </ul>
+            <ul>
+              <li><router-link to="/team/Fullham/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/premierLeague/Fullham.png')" alt=""/>
+                </div>
+                <p>富勒姆</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/LeedsUnit/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/premierLeague/LeedsUnit.png')" alt=""/>
+                </div>
+                <p>利兹联</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/WestBromwich/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/premierLeague/WestBromwich.png')" alt=""/>
+                </div>
+                <p>西布朗维奇</p>
               </router-link>
               </li>
             </ul>
@@ -311,12 +274,21 @@
                   <p>帕德博恩</p>
                 </router-link>
                 </li>
-                <li><router-link to="/team/BerlinUnion/" tag="a">
-                  <div class="team-logo">
-                    <img :src="require('@/assets/images/Bundesliga/BerlinUnion.jpg')" alt=""/>
-                  </div>
-                  <p>柏林联合</p>
-                </router-link>
+                <li>
+                  <router-link to="/team/BerlinUnion/" tag="a">
+                    <div class="team-logo">
+                      <img :src="require('@/assets/images/Bundesliga/BerlinUnion.jpg')" alt=""/>
+                    </div>
+                    <p>柏林联合</p>
+                  </router-link>
+                </li>
+                <li>
+                  <router-link to="/team/Bremen/" tag="a">
+                    <div class="team-logo">
+                      <img :src="require('@/assets/images/Bundesliga/Bremen.jpg')" alt=""/>
+                    </div>
+                    <p>云达不来梅</p>
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -407,6 +379,27 @@
                 <p>苏维埃之翼</p>
               </router-link>
               </li>
+              <li><router-link to="/team/Watford/">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/premierLeague/Watford.jpg')" alt=""/>
+                </div>
+                <p>沃特福德</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/Norwich/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/premierLeague/Norwich.jpg')" alt=""/>
+                </div>
+                <p>诺维奇</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/AFCBournemouth/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/premierLeague/AFCBournemouth.jpg')" alt=""/>
+                </div>
+                <p>伯恩茅斯</p>
+              </router-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -429,6 +422,64 @@
                   <img :src="require('@/assets/images/AFC/SydneyFC.jpg')" alt=""/>
                 </div>
                 <p>悉尼FC</p>
+              </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="logo">
+            <img :src="require('@/assets/images/league/KLeague.jpg')" alt=""/>
+          </div>
+          <div class="team-wrapper">
+            <ul>
+              <li><router-link to="/team/GangwonFC/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/GangwonFC.jpg')" alt=""/>
+                </div>
+                <p>江原FC</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/SangjuSangmu/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/SangjuSangmu.png')" alt=""/>
+                </div>
+                <p>尚州尚武</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/Samsung/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/Samsung.png')" alt=""/>
+                </div>
+                <p>水原三星</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/UlsanHyundaiFC/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/UlsanHyundai.jpg')" alt=""/>
+                </div>
+                <p>蔚山现代</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/Posco/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/Posco.png')" alt=""/>
+                </div>
+                <p>浦项制铁</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/JeonbukHyundai/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/JeonbukHyundai.jpg')" alt=""/>
+                </div>
+                <p>全北现代</p>
+              </router-link>
+              </li>
+              <li><router-link to="/team/SeongnamFC/" tag="a">
+                <div class="team-logo">
+                  <img :src="require('@/assets/images/KLeague/SeongnamFC.jpg')" alt=""/>
+                </div>
+                <p>城南FC</p>
               </router-link>
               </li>
             </ul>
